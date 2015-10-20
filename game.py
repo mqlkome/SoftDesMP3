@@ -7,6 +7,7 @@ Created on Oct 19, 2015
 
 import pygame
 from pygame.locals import *
+import os, sys
 
 import model
 from model import *
@@ -64,14 +65,15 @@ if __name__ == '__main__':
         screen1.blit(sun,(540,20))
 
         for event in pygame.event.get():
-            if event.type == QUIT:
-                running = False
-#            if event.type == MOUSEMOTION:
-#                controller.handle_mouse_event(event)
+            if event.type == pygame.QUIT:
+                sys.exit()
             elif event.type == KEYDOWN:
-                controller.handle_key_event(event)
                 if event.key == K_ESCAPE:
                     pygame.quit()
+#            if event.type == MOUSEMOTION:
+#                controller.handle_mouse_event(event)
+
+
         view.draw()
         time.sleep(.001)
 
