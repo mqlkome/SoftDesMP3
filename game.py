@@ -26,7 +26,7 @@ if __name__ == '__main__':
     screen1 = pygame.display.set_mode(size)
     #screen2= pygame.display.set_mode(size)
     background=pygame.image.load("image2.jpg").convert()
-    player1=pygame.image.load("images/human1.png")
+    player1=pygame.image.load("images/person1anim.gif")
     player2=pygame.image.load("images/human2.PNG")
     obstacle1=pygame.image.load("images/tree.PNG")
     obstacle2=pygame.image.load("images/bug.png")
@@ -68,8 +68,10 @@ if __name__ == '__main__':
                 running = False
 #            if event.type == MOUSEMOTION:
 #                controller.handle_mouse_event(event)
-            if event.type == KEYDOWN:
+            elif event.type == KEYDOWN:
                 controller.handle_key_event(event)
+                if event.key == K_ESCAPE:
+                    pygame.quit()
         view.draw()
         time.sleep(.001)
 
