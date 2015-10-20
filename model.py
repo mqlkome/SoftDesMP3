@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Oct 14 2014
 
-@author: Amon Millner, building upon Paul Ruvolo’s Spring 2014 SoftDes example
+
+@author: Jake, Mimi
 """
 
 
 import pygame
 from pygame.locals import *
 
-backgound=pygame.image.load("image1.jpg")
-player1=pygame.image.load("images/human1.png")
+
 green1=(77,153,0)
 
 class MapsolvingModel:
