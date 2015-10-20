@@ -24,6 +24,8 @@ if __name__ == '__main__':
     pygame.init()
 
     size = (640,480)
+
+    #loading the images we made
     screen1 = pygame.display.set_mode(size)
     #screen2= pygame.display.set_mode(size)
     background=pygame.image.load("image2.jpg").convert()
@@ -44,6 +46,7 @@ if __name__ == '__main__':
     obstacles=[obstacle1,obstacle2,obstacle3,obstacle4]
     items=[item1,item2,item3,item4,item5,item6]
 
+    #choosing the random images
     randplayer=randint(0,1)
     randobstacle=randint(0,2)
     randitem=randint(0,5)
