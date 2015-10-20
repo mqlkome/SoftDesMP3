@@ -21,6 +21,6 @@ class PyGameWindowView:
     def draw(self):
         
         pygame.draw.rect(self.screen, pygame.Color(self.model.ground.color[0],self.model.ground.color[1],self.model.ground.color[2]),pygame.Rect(self.model.ground.x,self.model.ground.y,self.model.ground.width,self.model.ground.height))     
-        
+        self.screen.blit(self.model.sun.image,(self.model.sun.x,self.model.sun.y))
         pygame.display.update()
 

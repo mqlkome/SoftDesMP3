@@ -20,7 +20,7 @@ class MapsolvingModel:
         #     brick = Brick((0,255,0),20,100,x,120)
         #     self.bricks.append(brick)
         self.ground = Ground(green1,140,640,0,360)
-        #self.ground=Sun()
+        self.sun=Sun()
 class Ground:
     """ Encodes the state of a brick in the game """
     def __init__(self,color,height,width,x,y):
@@ -31,12 +31,11 @@ class Ground:
         self.y = y
 
 class Sun:
-    def __init__(self,color,height,width,x,y):
-        self.color = color
-        self.height = height
-        self.width = width
-        self.x = x
-        self.y = y
+    def __init__(self):
+        self.image=pygame.image.load("images/sun.png")
+        
+        self.x = 540
+        self.y = 20
 
 
 class Obstacles:
