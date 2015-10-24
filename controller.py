@@ -25,8 +25,20 @@ class PyGameKeyboardController:
     def handle_key_event(self, event):
         if event.type != KEYDOWN:
             return
+        if event.key == K_ESCAPE:
+            pygame.quit()
         if event.key == pygame.K_LEFT:
-            self.model.paddle.x += -10
+            self.model.player.x += -30
         if event.key == pygame.K_RIGHT:
-            self.model.paddle.x += 10
+            self.model.player.x += 30
+        ##if popup comes out
+        ## press a to attack
+        
+        # if event.key ==pygame.K_a:
+        #     view.rspgame #rock scissor paper game
+        # if event.key==pygame.K_i:
+        #     # you used the wrong item
+
+
+
 

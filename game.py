@@ -66,6 +66,7 @@ if __name__ == '__main__':
     size = (640,480)
     screen1 = pygame.display.set_mode(size)
     background=pygame.image.load("image2.jpg").convert()
+<<<<<<< Updated upstream
     sun=pygame.image.load("images/sun.png")
 
     #load the sprites and put them in groups
@@ -87,10 +88,11 @@ if __name__ == '__main__':
     view = PyGameWindowView(model,screen1)
 
     # we didn't include the controller yet
-    #controller = PyGameMouseController(model)
-    #controller = PyGameKeyboardController(model)
+    controller = PyGameMouseController(model)
+    controller = PyGameKeyboardController(model)
 
     running = True
+
     while running:
         screen1.blit(background,(0,0))
         player.draw(screen1)
@@ -98,10 +100,6 @@ if __name__ == '__main__':
         obstacle.draw(screen1)
         screen1.blit(sun,(540,20))
 
-        # if pygame.sprite.spritecollide(players, items):
-        #     print "you found an item!"
-           
-        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -116,9 +114,21 @@ if __name__ == '__main__':
                 if event.key == K_LEFT:
                     player.moveleft()
               
+
+                #player controller"""
+
+                # elif event.key==K_RIGHT:
+                #     player_pos_x+= 20
+
+                # elif event.key==K_LEFT:
+                #     player_pos_x+= -20
+
 #            if event.type == MOUSEMOTION:
 #                controller.handle_mouse_event(event)
+        #player_pos=(player_pos_x,player_pos_y)
 
+
+        
 
         view.draw()
         time.sleep(.001)
