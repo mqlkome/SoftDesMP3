@@ -31,29 +31,11 @@ if __name__ == '__main__':
     #loading the images we made
     screen1 = pygame.display.set_mode(size)
     #screen2= pygame.display.set_mode(size)
-    background=pygame.image.load("image2.jpg").convert()
-    background2=pygame.image.load("image3.jpg").convert()
-    # player1=pygame.image.load("images/human1.png")
-    # player2=pygame.image.load("images/human2.PNG")
-    # #player's default position
-
-    # player_pos_x=0
-    # player_pos_y=204
-
-    # obstacle1=pygame.image.load("images/tree.PNG")
-    # obstacle2=pygame.image.load("images/bug.png")
-    # obstacle3=pygame.image.load("images/cat.PNG")
-    # obstacle4=pygame.image.load("images/princess.png")
-    # item1=pygame.image.load("images/camera.png")
-    # item2=pygame.image.load("images/eggplant.png")
-    # item3=pygame.image.load("images/flower.png")
-    # item4=pygame.image.load("images/mushroom.png")
-    # item5=pygame.image.load("images/mysteriousblueorb.png")
-    # item6=pygame.image.load("images/sword.png")
-    #sun=pygame.image.load("images/sun.png")
-    #players=[player1,player2]
-    # obstacles=[obstacle1,obstacle2,obstacle3,obstacle4]
-    # items=[item1,item2,item3,item4,item5,item6]
+    background1=pygame.image.load("bluesky.png").convert()
+    background2=pygame.image.load("mountain.png").convert()
+    background3=pygame.image.load("fire.png").convert()
+    background4=pygame.image.load("castle.png").convert()
+    
 
     #choosing the random images
     num_player=[0,1]
@@ -74,11 +56,8 @@ if __name__ == '__main__':
     
     while running:
 
-        screen1.blit(background,(0,0))
-        #screen1.blit(players[randplayer],player_pos)
-        #screen1.blit(obstacles[randobstacle],(550,200))
-        #screen1.blit(items[randitem],(220,280))
-        #screen1.blit(sun,(540,20))
+        screen1.blit(background1,(0,0))
+        
 
         model.player.assign_int=randplayer
         model.obstacle.assign_int=randobstacle
