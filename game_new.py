@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
         #Picking up items: this should happen when you press the key for "pick up item" not automatically when you collide with it:
         if pygame.sprite.collide_rect(model.player, model.item):
-          model.player.pick_up_item(model.player, model.item)
+            model.player.pick_up_item(model.player, model.item)
             picked_up_item = True
         #picked_up_item = False
 
@@ -54,7 +54,8 @@ if __name__ == '__main__':
             if model.player.previousx >= model.player.xposition:
                 if picked_up_item:                  
                     pass
-                else:                                        controller.model.player.moveright()
+                else:                                        
+                    controller.model.player.moveright()
 
         ##Obstacles are solid too
         if pygame.sprite.collide_rect(model.player, model.obstacle):
@@ -63,7 +64,7 @@ if __name__ == '__main__':
             if event.type==KEYDOWN: 
                 if event.key==K_f:
                     ##showing the popup for the long time
-                    rcnum=1 #randint(0,2)#randomly pick the computer's rock//scissor//paper
+                    rcnum=2#randint(0,2)#randomly pick the computer's rock//scissor//paper
                     Time=True
                     while Time:
                         for event in pygame.event.get():
@@ -81,7 +82,7 @@ if __name__ == '__main__':
                                     showresult_during_keypressed=True
                                     while showresult_during_keypressed:
                                         view.show_rock()
-                                        pygame.time.delay(1000)
+                                        pygame.time.delay(50)
                                         if rcnum==0:
                                             #rclist[rcnum]
                                             #print "draw" #change this with graphics later on
@@ -92,7 +93,9 @@ if __name__ == '__main__':
                                                 else:
                                                     print "draw"
                                                     view.show_rock_obs()
-                                                    #showresult_during_keypressed=False
+                                                    
+                                                    #view.show_draw
+                                                    
 
 
 
@@ -100,7 +103,7 @@ if __name__ == '__main__':
                                         elif rcnum==1:
                                             for event in pygame.event.get():
 
-                                                if event.key==K_SPACE:
+                                                if event.key==pygame.K_SPACE:
                                                     background1=background2
                                                     showresult_during_keypressed=False
                                                     #change item. change obstacle
@@ -109,11 +112,30 @@ if __name__ == '__main__':
                                                     print "player win"
                                                     view.show_scissor_obs()
                                         
-                                        elif recnum==2:
-                                            if event.key==K_SPACE:
-                                                #player to the original position
-                                                print "player lost" 
-                                            #show gameover sign, play again sign
+                                        elif rcnum==2:
+                                            for event in pygame.event.get():
+
+                                                if event.key==pygame.K_SPACE:
+                                                    background1=background2
+                                                    showresult_during_keypressed=False
+                                                    #change item. change obstacle
+                                                    #change player position
+                                                else:
+                                                    print "player lost"
+                                                    view.show_paper_obs()
+                                                    choosing_playagain=True
+                                                    while choosing_playagain:
+                                                        for event in pygame.event.get():
+                                                            if event.type==KEYDOWN:
+                                                                if event.key==pygame.K_a:
+                                                                    choosing_playagain=False
+                                                                    pygame.Quit()
+                                                            else:
+                                                                view.show_scissor_obs()
+                                                                print "not getting a yet"#for checking needto change with press a to play again
+
+
+                                                    #show gameover sign, play again sign
 
                                     Time=False
                                     
