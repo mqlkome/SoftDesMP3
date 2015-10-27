@@ -14,6 +14,7 @@ class PyGameWindowView:
     def draw(self):
         ##Draw the background
         self.screen.blit(self.background1,(0,0))
+        
         ##Draw the player
         self.model.player.draw(self.screen)
         
