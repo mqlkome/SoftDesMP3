@@ -59,17 +59,17 @@ if __name__ == '__main__':
         ##Obstacles are solid from the left
         ##THIS WILL BE MODIFIED SO THAT A SUCCESFUL BRIBE OR WIN IN A FIGHT WILL ALLOW YOU TO PASS
         if pygame.sprite.collide_rect(model.player, model.obstacle):
-            if model.player.previousx <= model.player.xposition:
-                controller.model.player.moveleft()
-            elif model.player.previousx >= model.player.xposition:
-                controller.model.player.moveright()
+            # if model.player.previousx <= model.player.xposition:
+            #     controller.model.player.moveleft()
+            # elif model.player.previousx >= model.player.xposition:
+            #     controller.model.player.moveright()
 
 
             
             if event.type==KEYDOWN: 
                 if event.key==K_f:
                     ##showing the popup for the long time
-                    rcnum=randint(0,2)#randomly pick the computer's rock//scissor//paper
+                    rcnum=2#randint(0,2)#randomly pick the computer's rock//scissor//paper
                     Time=True
                     while Time:
                         for event in pygame.event.get():
@@ -115,6 +115,7 @@ if __name__ == '__main__':
                                                     model.change_player_position()
 
                                                     showresult_during_keypressed=False
+                                                    Time=False
                                                     #change item. change obstacle
                                                     #change player position
                                                 else:
@@ -129,12 +130,15 @@ if __name__ == '__main__':
                                                 
                                                 if event_new.key==pygame.K_a:
                                                     
+                                                    model.reset()
                                                     showresult_during_keypressed=False
-                                                    pygame.quit()
+                                                    
                                                     #restart
                                                 else:
                                                     print "player lost" #change it to graphics
+                                                    print "To play again press a"
                                                     view.show_paper_obs()
+
                                                     # choosing_playagain=True
                                                     # while choosing_playagain:
                                                     
@@ -168,6 +172,7 @@ if __name__ == '__main__':
                     
             else:
                 view.show_popup()
+
 
             
      

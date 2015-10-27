@@ -38,6 +38,10 @@ class MapsolvingModel:
     def change_player_position(self):
         self.player.xposition=0
         self.player.yposition=204
+    def reset(self):
+        self.item=Item(220,280,0)
+        self.player.xposition=0
+        self.player.yposition=204
 
 
 

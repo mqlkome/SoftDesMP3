@@ -19,3 +19,4 @@ class PyGameKeyboardController:
             self.model.player.moveleft()
         if event.key == pygame.K_RIGHT:
             self.model.player.moveright()
+        
