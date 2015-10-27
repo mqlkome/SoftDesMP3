@@ -64,7 +64,7 @@ if __name__ == '__main__':
             if event.type==KEYDOWN: 
                 if event.key==K_f:
                     ##showing the popup for the long time
-                    rcnum=2#randint(0,2)#randomly pick the computer's rock//scissor//paper
+                    rcnum=randint(0,2)#randomly pick the computer's rock//scissor//paper
                     Time=True
                     while Time:
                         for event in pygame.event.get():
@@ -105,34 +105,41 @@ if __name__ == '__main__':
 
                                                 if event.key==pygame.K_SPACE:
                                                     background1=background2
+                                                    model.change_obstacle()
+                                                    model.change_item()
+                                                    model.change_player_position()
+
                                                     showresult_during_keypressed=False
                                                     #change item. change obstacle
                                                     #change player position
                                                 else:
                                                     print "player win"
+                                                    print "press SPACE to go to second round"
                                                     view.show_scissor_obs()
-                                        
-                                        elif rcnum==2:
-                                            for event in pygame.event.get():
 
-                                                if event.key==pygame.K_SPACE:
-                                                    background1=background2
+
+                                        #if computer's pick is paper
+                                        elif rcnum==2:
+                                            for event_new in pygame.event.get():
+                                                
+                                                if event_new.key==pygame.K_a:
+                                                    
                                                     showresult_during_keypressed=False
-                                                    #change item. change obstacle
-                                                    #change player position
+                                                    pygame.quit()
+                                                    #restart
                                                 else:
-                                                    print "player lost"
+                                                    print "player lost" #change it to graphics
                                                     view.show_paper_obs()
-                                                    choosing_playagain=True
-                                                    while choosing_playagain:
-                                                        for event in pygame.event.get():
-                                                            if event.type==KEYDOWN:
-                                                                if event.key==pygame.K_a:
-                                                                    choosing_playagain=False
-                                                                    pygame.Quit()
-                                                            else:
-                                                                view.show_scissor_obs()
-                                                                print "not getting a yet"#for checking needto change with press a to play again
+                                                    # choosing_playagain=True
+                                                    # while choosing_playagain:
+                                                    
+                                                        
+                                                    #     if event.key==pygame.K_a:
+                                                    #         choosing_playagain=False
+                                                    #         pygame.init()
+                                                    #     else:
+                                                    #         view.show_scissor_obs()
+                                                    #         print "not getting a yet"#for checking needto change with press a to play again
 
 
                                                     #show gameover sign, play again sign
@@ -170,6 +177,6 @@ if __name__ == '__main__':
 
     view.draw()
     
-    time.sleep(.001)
+    time.sleep(.050)
     sys.exit()
     pygame.quit()

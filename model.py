@@ -13,8 +13,8 @@ class MapsolvingModel:
         self.ground = Ground(green1,140,640,0,360)
         self.sun=Sun(540,20)
         self.player=Player(0,204)
-        self.obstacle=Obstacle(550,200,1)
-        self.item=Item(220,280,1)
+        self.obstacle=Obstacle(550,200,0)
+        self.item=Item(220,280,0)
         self.attack=Attack(200,100)
         self.popup=Popup(400,100)
 
@@ -27,6 +27,19 @@ class MapsolvingModel:
         self.rock_obs=Rockscissorpaper_obs(520,100,0)
         self.scissor_obs=Rockscissorpaper_obs(520,100,1)
         self.paper_obs=Rockscissorpaper_obs(520,100,2)
+        self.counter=1
+    def change_obstacle(self):
+        #change obstacle and reset position
+        self.obstacle=Obstacle(550,200,self.counter)
+        self.counter+=1
+
+    def change_item(self):
+        self.item=Item(220,280,self.counter)
+    def change_player_position(self):
+        self.player.xposition=0
+        self.player.yposition=204
+
+
 
 class Ground:
     def __init__(self,color,height,width,x,y):
@@ -43,7 +56,7 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load(players[randint(0,1)])
         self.xposition = x
         self.yposition=y
-	self.previousx = self.xposition
+        self.previousx = self.xposition
         self.rect = self.image.get_rect()
         self.rect.x = self.xposition
         self.rect.y = y
