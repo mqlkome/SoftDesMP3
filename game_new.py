@@ -18,11 +18,7 @@ if __name__ == '__main__':
     #create a screen of some "size" and load background
     size = (640,480)
     screen1 = pygame.display.set_mode(size)
-    background1=pygame.image.load("images/bluesky.png").convert()
-    background2=pygame.image.load("images/mountain.png").convert()
-    background3=pygame.image.load("images/fire.png").convert()
-    background4=pygame.image.load("images/castle.png").convert()
-
+    
     #rsplist=[view.rock_obs,view.scissor_obs,view.paper_obs]
     #instantiate the model and view classes
 
@@ -33,14 +29,14 @@ if __name__ == '__main__':
 
     running = True
     while running:
-        screen1.blit(background1,(0,0))
         view.draw()
 
         #Picking up items: this should happen when you press the key for "pick up item" not automatically when you collide with it:
         if pygame.sprite.collide_rect(model.player, model.item):
+            #
             model.player.pick_up_item(model.player, model.item)
             picked_up_item = True
-        #picked_up_item = False
+            #picked_up_item = False
 
         ##Items are solid from the left
         if pygame.sprite.collide_rect(model.player, model.item):
@@ -48,24 +44,17 @@ if __name__ == '__main__':
                 if picked_up_item:
                     pass
                 else:
-                    controller.model.player.moveleft()
+                    controller.model.player.stepback()
         ##Items are solid from the right
             elif model.player.previousx >= model.player.xposition:
                 if picked_up_item:                  
                     pass
                 else:                                        
-                    controller.model.player.moveright()
+                    controller.model.player.stepback()
 
         ##Obstacles are solid from the left
         ##THIS WILL BE MODIFIED SO THAT A SUCCESFUL BRIBE OR WIN IN A FIGHT WILL ALLOW YOU TO PASS
         if pygame.sprite.collide_rect(model.player, model.obstacle):
-            if model.player.previousx <= model.player.xposition:
-                controller.model.player.moveleft()
-            elif model.player.previousx >= model.player.xposition:
-                controller.model.player.moveright()
-
-
-            
             if event.type==KEYDOWN: 
                 if event.key==K_f:
                     ##showing the popup for the long time
@@ -160,7 +149,16 @@ if __name__ == '__main__':
 
                     
             else:
+                print "is this even real"
+                
+                if model.player.previousx <= model.player.xposition:
+                    controller.model.player.stepback()
+                    
+                elif model.player.previousx >= model.player.xposition:
+                    controller.model.player.stepback()
                 view.show_popup()
+
+                
 
             
      

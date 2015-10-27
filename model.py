@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load(players[randint(0,1)])
         self.xposition = x
         self.yposition=y
-	self.previousx = self.xposition
+        self.previousx = self.xposition
         self.rect = self.image.get_rect()
         self.rect.x = self.xposition
         self.rect.y = y
@@ -57,6 +57,10 @@ class Player(pygame.sprite.Sprite):
         self.previousx = self.xposition
         self.xposition += -30
         self.rect.x = self.xposition
+    def stepback(self):
+        self.xposition = self.previousx
+        self.rect.x = self.xposition
+        print "stepback"
 
     def draw(self, screen):
         screen.blit(self.image, (self.xposition,self.yposition))    

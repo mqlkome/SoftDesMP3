@@ -6,8 +6,14 @@ class PyGameWindowView:
     def __init__(self,model,screen):
         self.model = model
         self.screen = screen
+        self.background1=pygame.image.load("images/bluesky.png").convert()
+        self.background2=pygame.image.load("images/mountain.png").convert()
+        self.background3=pygame.image.load("images/fire.png").convert()
+        self.background4=pygame.image.load("images/castle.png").convert()
 
     def draw(self):
+        ##Draw the background
+        self.screen.blit(self.background1,(0,0))
         ##Draw the player
         self.model.player.draw(self.screen)
         
@@ -28,29 +34,31 @@ class PyGameWindowView:
 
     def show_popup(self):
         self.model.popup.draw(self.screen)
-        pygame.display.update()
+        print "show_popup"
+        # pygame.display.update()
 
     def show_attack(self):
         self.model.attack.draw(self.screen)
-        pygame.display.update()
+        #pygame.display.update()
 
     def show_rock(self):
         self.model.rock.draw(self.screen)
-        pygame.display.update()
+        #pygame.display.update()
 
     def show_scissor(self):
         self.model.scissor.draw(self.screen)
-        pygame.display.update()
+        #pygame.display.update()
+
     def show_paper(self):
         self.model.paper.draw(self.screen)
-        pygame.display.update()
+        #pygame.display.update()
 
     def show_rock_obs(self):
         self.model.rock_obs.draw(self.screen)
-        pygame.display.update()
+        #pygame.display.update()
     def show_scissor_obs(self):
         self.model.scissor_obs.draw(self.screen)
-        pygame.display.update()
+        #pygame.display.update()
     def show_paper_obs(self):
         self.model.paper_obs.draw(self.screen)
-        pygame.display.update()
+        #pygame.display.update()
