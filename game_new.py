@@ -50,16 +50,21 @@ if __name__ == '__main__':
                 else:
                     controller.model.player.moveleft()
         ##Items are solid from the right
-        if pygame.sprite.collide_rect(model.player, model.obstacle):
-            if model.player.previousx >= model.player.xposition:
+            elif model.player.previousx >= model.player.xposition:
                 if picked_up_item:                  
                     pass
                 else:                                        
                     controller.model.player.moveright()
 
-        ##Obstacles are solid too
+        ##Obstacles are solid from the left
+        ##THIS WILL BE MODIFIED SO THAT A SUCCESFUL BRIBE OR WIN IN A FIGHT WILL ALLOW YOU TO PASS
         if pygame.sprite.collide_rect(model.player, model.obstacle):
-            print "you met someone!"
+            if model.player.previousx <= model.player.xposition:
+                controller.model.player.moveleft()
+            elif model.player.previousx >= model.player.xposition:
+                controller.model.player.moveright()
+
+
             
             if event.type==KEYDOWN: 
                 if event.key==K_f:
