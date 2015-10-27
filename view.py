@@ -1,69 +1,56 @@
-# -*- coding: utf-8 -*-
-"""
-
-
-@author: Jake, Mimi
-"""
-
-
 import pygame
 from pygame.locals import *
-import sys
-
 
 class PyGameWindowView:
-    """ A view of brick breaker rendered in a Pygame window """
+    ##Render our starting screen
     def __init__(self,model,screen):
         self.model = model
         self.screen = screen
 
-        
     def draw(self):
+        ##Draw the player
+        self.model.player.draw(self.screen)
         
-        pygame.draw.rect(self.screen, pygame.Color(self.model.ground.color[0],self.model.ground.color[1],self.model.ground.color[2]),pygame.Rect(self.model.ground.x,self.model.ground.y,self.model.ground.width,self.model.ground.height))     
+        ##Draw the ground
+        pygame.draw.rect(self.screen, pygame.Color(self.model.ground.color[0],self.model.ground.color[1],self.model.ground.color[2]),pygame.Rect(self.model.ground.x,self.model.ground.y,self.model.ground.width,self.model.ground.height))	 
+
+        ##Draw the sun [change to model draw function] 
         self.screen.blit(self.model.sun.image,(self.model.sun.x,self.model.sun.y))
-        self.screen.blit(self.model.player.image,(self.model.player.x,self.model.player.y))
 
-       
+        ##Draw the obstacle[change to model draw function]
         self.screen.blit(self.model.obstacle.image,(self.model.obstacle.x,self.model.obstacle.y))
-        self.screen.blit(self.model.item.image,(self.model.item.x,self.model.item.y))
 
-
+        ##Draw the item
+        self.model.item.draw(self.screen)
+        
         pygame.display.update()
 
+
     def show_popup(self):
-        self.screen.blit(self.model.popup.image,(self.model.popup.x,self.model.popup.y))
+        self.model.popup.draw(self.screen)
+        pygame.display.update()
 
+    def show_attack(self):
+        self.model.attack.draw(self.screen)
+        pygame.display.update()
 
-    def make_popup(self):
+    def show_rock(self):
+        self.model.rock.draw(self.screen)
+        pygame.display.update()
 
-        BASICFONT=pygame.font.SysFont(None,42)
-        width=100
-        height=70
-        popupSurf = pygame.Surface((width, height))
-        options = ['Attack', 'Talk', 'Item']
+    def show_scissor(self):
+        self.model.scissor.draw(self.screen)
+        pygame.display.update()
+    def show_paper(self):
+        self.model.paper.draw(self.screen)
+        pygame.display.update()
 
-        for i in range(len(options)):
-
-            textSurf = BASICFONT.render(options[i], 1,(0,0,255))
-            textRect = textSurf.get_rect()
-            
-            #textRect.top=popupSurf.height
-            
-            textRect.top += pygame.font.Font.get_linesize(BASICFONT)
-            popupSurf.fill((255,0,0))
-            popupSurf.blit(textSurf, textRect)
-        
-
-            # for i in range(len(options)):
-            #     textSurf = BASICFONT.render(options[i], 1,(0,0,255))
-            #     textRect = textSurf.get_rect()
-            #     textRect.top = self.top
-            #     textRect.left = self.left
-            #     self.top += pygame.font.Font.get_linesize(BASICFONT)
-            #     popupSurf.blit(textSurf, textRect)
-            popupRect = popupSurf.get_rect()
-            popupRect.centerx = 500#SCREENWIDTH/2
-            popupRect.centery = 150 + 80*i#SCREENHEIGHT/2
-            self.screen.blit(popupSurf, popupRect)
-            pygame.display.update()
+    def show_rock_obs(self):
+        self.model.rock_obs.draw(self.screen)
+        pygame.display.update()
+    def show_scissor_obs(self):
+        self.model.scissor_obs.draw(self.screen)
+        pygame.display.update()
+    def show_paper_obs(self):
+        self.model.paper_obs.draw(self.screen)
+        pygame.display.update()

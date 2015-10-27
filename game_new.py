@@ -3,9 +3,9 @@ from pygame.locals import *
 import os, sys
 import PIL as pillow
 
-from model_new import *
-from controller_new import *
-from view_new import *
+from model import *
+from controller import *
+from view import *
 
 from random import randint
 import math
@@ -23,28 +23,47 @@ if __name__ == '__main__':
     background3=pygame.image.load("images/fire.png").convert()
     background4=pygame.image.load("images/castle.png").convert()
 
-    #rcslist=[view.rock_obs,view.scissor_obs,view.paper_obs]
+    #rsplist=[view.rock_obs,view.scissor_obs,view.paper_obs]
     #instantiate the model and view classes
 
     model = MapsolvingModel()
     view = PyGameWindowView(model,screen1)
     controller = PyGameKeyboardController(model)
-    #controller = PyGameMouseController(model)
+   
 
     running = True
     while running:
         screen1.blit(background1,(0,0))
         view.draw()
+
+        #Picking up items: this should happen when you press the key for "pick up item" not automatically when you collide with it:
         if pygame.sprite.collide_rect(model.player, model.item):
-            print "you found something!"
+          model.player.pick_up_item(model.player, model.item)
+            picked_up_item = True
+        #picked_up_item = False
+
+        ##Items are solid from the left
+        if pygame.sprite.collide_rect(model.player, model.item):
+            if model.player.previousx <= model.player.xposition:
+                if picked_up_item:
+                    pass
+                else:
+                    controller.model.player.moveleft()
+        ##Items are solid from the right
+        if pygame.sprite.collide_rect(model.player, model.obstacle):
+            if model.player.previousx >= model.player.xposition:
+                if picked_up_item:                  
+                    pass
+                else:                                        controller.model.player.moveright()
+
+        ##Obstacles are solid too
         if pygame.sprite.collide_rect(model.player, model.obstacle):
             print "you met someone!"
-
             
             if event.type==KEYDOWN: 
                 if event.key==K_f:
                     ##showing the popup for the long time
-                    rcnum=1#randint(0,2) #randomly pick the computer's rock//scissor//paper
+                    rcnum=1 #randint(0,2)#randomly pick the computer's rock//scissor//paper
                     Time=True
                     while Time:
                         for event in pygame.event.get():
