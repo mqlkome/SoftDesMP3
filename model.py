@@ -61,6 +61,7 @@ class MapsolvingModel:
         self.sun=Sun(320,5)
         self.change_player_position()
         self.change_item()
+        self.counter+=1
 
 
 
