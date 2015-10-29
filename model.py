@@ -54,6 +54,18 @@ class MapsolvingModel:
         self.change_item()
         self.change_player_position()
         self.change_obstacle()
+    def make_princess(self):
+        #place the obstacle out of the screen
+        self.obstacle=Obstacle(500,150,self.counter)
+        self.background=Background(0,0,self.counter)
+        self.sun=Sun(320,5)
+        self.change_player_position()
+        self.change_item()
+
+
+
+
+
 
 
 class Background:
@@ -119,14 +131,27 @@ class Player(pygame.sprite.Sprite):
     	#player's default position
 
 class Princess(pygame.sprite.Sprite):
-    def __init__(self):
-        pass
+    def __init__(self,x,y):
+        pygame.sprite.Sprite.__init__(self)
+        princessimage="images/princess.png"     
+        self.image=pygame.image.load(princessimage)
+
+        #Princess position
+        
+        self.x = x
+        self.y = y
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def draw(self, screen):
+        screen1.blit(self.image,(self.x,self.y))
 
 class Obstacle(pygame.sprite.Sprite):
     ###The obstacle characters
     def __init__(self,x,y,assign_int):
         pygame.sprite.Sprite.__init__(self)
-        obstacles=["images/tree.PNG","images/bug.png","images/cat.PNG"]
+        obstacles=["images/tree.PNG","images/bug.png","images/cat.PNG","images/princess.png"]
 
         ##Use to load random obstacle
         self.assign_int=assign_int

@@ -45,19 +45,32 @@ if __name__ == '__main__':
     def rcs_win(num):
         if event.type==KEYDOWN:
             if event.key==pygame.K_SPACE:
-                model.change_background()
-                model.change_obstacle()
-                model.change_item()
-                model.change_player_position()
-                #view.draw()
-                global showresult_during_keypressed
-                showresult_during_keypressed=False
-                global Time
-                Time=False
-                
-                return showresult_during_keypressed
-                #change item. change obstacle
-                #change player position
+                if model.counter <3:
+                    model.change_background()
+                    model.change_obstacle()
+                    model.change_item()
+                    model.change_player_position()
+
+                    #view.draw()
+                    global showresult_during_keypressed
+                    showresult_during_keypressed=False
+                    global Time
+                    Time=False
+                    print model.counter
+                    return showresult_during_keypressed
+                    #change item. change obstacle
+                    #change player position
+
+                elif model.counter==3:
+                    model.make_princess()
+
+                    showresult_during_keypressed=False
+                    
+                    Time=False
+                    print model.counter
+                    return showresult_during_keypressed
+
+
         else:
             print "player win"
             print "press SPACE to go to second round"
@@ -135,10 +148,11 @@ if __name__ == '__main__':
                 for event in pygame.event.get():
                     if event.type==KEYDOWN: 
                         obstcollision = False
-                        if event.key==K_f:
-                            
+                        
+
+                        if event.key== K_f:
                             ##showing the popup for the long time
-                            rcnum=randint(0,2)#randomly pick the computer's rock//scissor//paper
+                            rcnum=1#randint(0,2)#randomly pick the computer's rock//scissor//paper
                             Time=True
                             while Time:
                                 for event in pygame.event.get():
@@ -181,20 +195,6 @@ if __name__ == '__main__':
                                                     for event in pygame.event.get():    
                                                         rcs_lost(2)
 
-
-                                                            # choosing_playagain=True
-                                                            # while choosing_playagain:
-                                                            
-                                                            #     if event.key==pygame.K_a:
-                                                            #         choosing_playagain=False
-                                                            #         pygame.init()
-                                                            #     else:
-                                                            #         view.show_scissor_obs()
-                                                            #         print "not getting a yet"#for checking needto change with press a to play again
-
-
-                                                            #show gameover sign, play again sign
-
                                             Time=False
                                             
                                             #rclist[rcnum]
@@ -209,23 +209,13 @@ if __name__ == '__main__':
                                                 if Oneloop:
                                                     view.draw()
                                                     Oneloop=False
-                                                view.show_rock()
+                                                view.show_scissor()
                                                 pygame.time.delay(50)
                                                 if rcnum==0:
                                                     #rclist[rcnum]
                                                     #print "draw" #change this with graphics later on
                                                     for event in pygame.event.get():
-                                                        
-                                                        if event.key==K_SPACE:
-                                                            showresult_during_keypressed=False
-                                                        else:
-                                                            print "you lost"
-                                                            view.draw()
-                                                            pygame.time.delay(500)
-                                                            view.show_lost_popup()
-                                                            view.show_rock_obs()
-                                                            
-                                                            #view.show_draw
+                                                        rcs_lost(0)
                                                             
 
 
@@ -234,47 +224,50 @@ if __name__ == '__main__':
                                                 elif rcnum==1:
                                                     for event in pygame.event.get():
 
-                                                        if event.key==pygame.K_SPACE:
-                                                            model.change_background()
-                                                            model.change_obstacle()
-                                                            model.change_item()
-                                                            model.change_player_position()
-
-                                                            showresult_during_keypressed=False
-                                                            Time=False
-                                                            #change item. change obstacle
-                                                            #change player position
-                                                        else:
-                                                            print "player draw"
-                                                            print "press SPACE to go to second round"
-                                                            view.draw()
-                                                            pygame.time.delay(500)
-                                                            view.show_win_popup()
-                                                            view.show_scissor_obs()
+                                                        rcs_draw(1)
 
 
                                                 #if computer's pick is paper
                                                 elif rcnum==2:
-                                                    for event_new in pygame.event.get():
+                                                    for event in pygame.event.get():
                                                         
-                                                        if event_new.key==pygame.K_a:
-                                                            
-                                                            model.reset()
-                                                            showresult_during_keypressed=False
-                                                            
-                                                            #restart
-                                                        else:
-                                                            print "player lost" #change it to graphics
-                                                            print "To play again press a"
-                                                            #view.draw()
-                                                            #pygame.time.delay(500)
-                                                            view.show_lost_popup()
-                                                            view.show_paper_obs()
+                                                        rcs_win(2)
                                             Time=False
                                             
                                         elif event.key==K_p:
+                                            showresult_during_keypressed=True
+                                            Oneloop=True
+                                            while showresult_during_keypressed:
+                                                
+                                                ##for one time it draws the background to hide the rockscissorpapaer popup
+                                                if Oneloop:
+                                                    view.draw()
+                                                    Oneloop=False
+                                                view.show_paper()
+                                                pygame.time.delay(50)
+                                                if rcnum==0:
+                                                    #rclist[rcnum]
+                                                    #print "draw" #change this with graphics later on
+                                                    for event in pygame.event.get():
+                                                        rcs_win(0)
+                                                            
+
+
+
+
+                                                elif rcnum==1:
+                                                    for event in pygame.event.get():
+
+                                                        rcs_lost(1)
+
+
+                                                #if computer's pick is paper
+                                                elif rcnum==2:
+                                                    for event in pygame.event.get():
+                                                        
+                                                        rcs_draw(2)
                                             Time=False
-                                            view.show_paper
+                                            
                                     else:
                                         view.draw()
                                         view.show_attack()
