@@ -104,6 +104,8 @@ if __name__ == '__main__':
     running = True
     while running:
         view.draw()
+        if model.player.xposition <= 0:
+            controller.model.player.stepback()
         if model.player.xposition >= 620:
             if model.counter < 3:
                 model.change_background()
