@@ -62,12 +62,6 @@ class MapsolvingModel:
         self.change_player_position()
         self.change_item()
 
-
-
-
-
-
-
 class Background:
     def __init__(self,x,y,assign_int):
         
@@ -166,9 +160,9 @@ class Obstacle(pygame.sprite.Sprite):
 
         self.wanted_item = Item(x,y,randint(0,5))
     def move(self):
-        self.x = self.x-600
-        self.rect.x = self.rect.x-600
-            
+        self.x = self.x-2000
+        self.rect.x = self.rect.x-2000
+                    
     def draw(self, screen):
         screen1.blit(self.image,(self.x,self.y))
 
@@ -197,6 +191,10 @@ class Item(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+
+    def move(self):
+        self.x = self.x-2000
+        self.rect.x = self.rect.x-2000
    	
     def draw(self, screen):
         screen.blit(self.image,(self.x,self.y))   

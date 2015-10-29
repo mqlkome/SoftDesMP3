@@ -148,21 +148,18 @@ if __name__ == '__main__':
                 for event in pygame.event.get():
                     if event.type==KEYDOWN: 
                         obstcollision = False
-<<<<<<< HEAD
-                        
 
-                        if event.key== K_f:
-=======
                         if event.key == K_i:
-                            if model.obstacle.wanted_item == model.item.image_path:
-                                print "thanks"
-                                model.obstacle.move()
-                            else:
-                                print "I hate that item. FIGHT ME"
+                            ##if model.obstacle.wanted_item == model.item.image_path:
+                            print "thanks"
+                            model.obstacle.move()
+                            model.item.move()
+                            ##else:
+                            ##    print "I hate that item. FIGHT ME"
                                 
                         if event.key==K_f:
                             
->>>>>>> a43842ad71ae2fee93966237bd7c9436c86ef055
+
                             ##showing the popup for the long time
                             rcnum=1#randint(0,2)#randomly pick the computer's rock//scissor//paper
                             Time=True
@@ -290,11 +287,7 @@ if __name__ == '__main__':
 
                             
                    # else:
-                
 
-
-            
-     
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
