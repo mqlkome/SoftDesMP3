@@ -66,21 +66,21 @@ class PyGameWindowView:
         pygame.display.update()
 
     def show_win_popup(self):
-        self.image1=pygame.image.load("images/win_popup.png")
-        self.screen.blit(self.image1,(400,2))
+        self.image1=pygame.image.load("images/win_popup.jpg")
+        self.screen.blit(self.image1,(200,100))
 
     def show_draw_popup(self):
-        self.image2=pygame.image.load("images/draw_popup.png")
-        self.screen.blit(self.image2,(400,2))
+        self.image2=pygame.image.load("images/draw_popup.jpg")
+        self.screen.blit(self.image2,(200,100))
 
     def show_lost_popup(self):
-        self.image3=pygame.image.load("images/lost_popup.png")
-        self.screen.blit(self.image3,(400,2))
+        self.image3=pygame.image.load("images/lost_popup.jpg")
+        self.screen.blit(self.image3,(200,100))
 
     def show_thanks_popup(self):
         self.image4 = pygame.image.load("images/thanks_popup.png")
         self.screen.blit(self.image4, (540, 50))
-        
+
     def show_nothanks_popup(self):
         self.image5 = pygame.image.load("images/nothanks_popup.png")
         self.screen.blit(self.image5, (540, 50))

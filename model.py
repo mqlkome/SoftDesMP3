@@ -209,7 +209,7 @@ class Item(pygame.sprite.Sprite):
 class Popup:
     ##When you meet obstacle character, this displays press F or I
     def __init__(self,x,y):
-        popups=["images/popup_obstacle.png"]
+        popups=["images/popup_obstacle.jpg"]
 
         self.image=pygame.image.load(popups[0])
         self.x = x
