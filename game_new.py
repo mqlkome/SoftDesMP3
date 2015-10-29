@@ -148,17 +148,22 @@ if __name__ == '__main__':
                 for event in pygame.event.get():
                     if event.type==KEYDOWN: 
                         obstcollision = False
+<<<<<<< HEAD
 
                         
 
                        
 
+=======
+
+>>>>>>> 2ba373ad612f5624eb724535a2aafc86ccbe20c7
                         if event.key == K_i:
-                            if model.obstacle.wanted_item == model.item.image_path:
-                                print "thanks"
-                                model.obstacle.move()
-                            else:
-                                print "I hate that item. FIGHT ME"
+                            ##if model.obstacle.wanted_item == model.item.image_path:
+                            print "thanks"
+                            model.obstacle.move()
+                            model.item.move()
+                            ##else:
+                            ##    print "I hate that item. FIGHT ME"
                                 
                         if event.key==K_f:
                             
@@ -290,11 +295,7 @@ if __name__ == '__main__':
 
                             
                    # else:
-                
 
-
-            
-     
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
