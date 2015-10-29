@@ -135,8 +135,13 @@ if __name__ == '__main__':
                 for event in pygame.event.get():
                     if event.type==KEYDOWN: 
                         obstcollision = False
-                        if even.key == K_i:
-
+                        if event.key == K_i:
+                            if model.obstacle.wanted_item == model.item.image_path:
+                                print "thanks"
+                                model.obstacle.move()
+                            else:
+                                print "I hate that item. FIGHT ME"
+                                
                         if event.key==K_f:
                             
                             ##showing the popup for the long time
