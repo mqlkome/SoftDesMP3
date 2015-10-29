@@ -150,12 +150,17 @@ if __name__ == '__main__':
                         obstcollision = False
 
                         if event.key == K_i:
-                            ##if model.obstacle.wanted_item == model.item.image_path:
-                            print "thanks"
-                            model.obstacle.move()
-                            model.item.move()
-                            ##else:
-                            ##    print "I hate that item. FIGHT ME"
+                            if model.obstacle.wanted_item == model.item.image_path:
+                                print "thanks"
+                                model.obstacle.move()
+                                if model.player.xposition >= 640:
+                                    if model.counter < 3:
+                                        model.change_background()
+                                        model.change_obstacle()
+                                        model.change_item()
+                                        model.change_player_position()
+                            else:
+                                print "I hate that item. FIGHT ME"
                                 
                         if event.key==K_f:
                             
