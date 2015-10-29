@@ -135,6 +135,8 @@ if __name__ == '__main__':
                 for event in pygame.event.get():
                     if event.type==KEYDOWN: 
                         obstcollision = False
+                        if even.key == K_i:
+
                         if event.key==K_f:
                             
                             ##showing the popup for the long time
@@ -146,7 +148,7 @@ if __name__ == '__main__':
                                         
                                         ##when player pick rock(pressed R)
                                         if event.key==K_r: 
-                                            """rock image comes out and fight with randomly generated rock scissor paper of computer"""
+                                            ##rock image comes out and fight with randomly generated rock scissor paper of computer
 
                                             showresult_during_keypressed=True
                                             Oneloop=True
