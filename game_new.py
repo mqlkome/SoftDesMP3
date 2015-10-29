@@ -104,7 +104,12 @@ if __name__ == '__main__':
     running = True
     while running:
         view.draw()
-
+        if model.player.xposition >= 620:
+            if model.counter < 3:
+                model.change_background()
+                model.change_obstacle()
+                model.change_item()
+                model.change_player_position()
         #Picking up items: this should happen when you press the key for "pick up item" not automatically when you collide with it:
         if pygame.sprite.collide_rect(model.player, model.item):
             #
@@ -153,12 +158,8 @@ if __name__ == '__main__':
                             if model.obstacle.wanted_item == model.item.image_path:
                                 print "thanks"
                                 model.obstacle.move()
-                                if model.player.xposition >= 640:
-                                    if model.counter < 3:
-                                        model.change_background()
-                                        model.change_obstacle()
-                                        model.change_item()
-                                        model.change_player_position()
+                                model.item.move()
+                        
                             else:
                                 print "I hate that item. FIGHT ME"
                                 
