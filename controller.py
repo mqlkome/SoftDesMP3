@@ -19,4 +19,6 @@ class PyGameKeyboardController:
             self.model.player.moveleft()
         if event.key == pygame.K_RIGHT:
             self.model.player.moveright()
+        # if event.key ==pygame.K_f:
+        #     self.model.popup.draw()
         

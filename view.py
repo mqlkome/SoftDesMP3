@@ -6,8 +6,15 @@ class PyGameWindowView:
     def __init__(self,model,screen):
         self.model = model
         self.screen = screen
+        # self.background1=pygame.image.load("images/bluesky.png").convert()
+        # self.background2=pygame.image.load("images/mountain.png").convert()
+        # self.background3=pygame.image.load("images/fire.png").convert()
+        # self.background4=pygame.image.load("images/castle.png").convert()
 
     def draw(self):
+        ##Draw the background
+        #self.screen.blit(self.background1,(0,0))
+        self.model.background.draw(self.screen)
         ##Draw the player
         self.model.player.draw(self.screen)
         
@@ -26,8 +33,10 @@ class PyGameWindowView:
         pygame.display.update()
 
 
+
     def show_popup(self):
         self.model.popup.draw(self.screen)
+        print "show_popup"
         pygame.display.update()
 
     def show_attack(self):
@@ -41,6 +50,7 @@ class PyGameWindowView:
     def show_scissor(self):
         self.model.scissor.draw(self.screen)
         pygame.display.update()
+
     def show_paper(self):
         self.model.paper.draw(self.screen)
         pygame.display.update()
@@ -54,3 +64,15 @@ class PyGameWindowView:
     def show_paper_obs(self):
         self.model.paper_obs.draw(self.screen)
         pygame.display.update()
+
+    def show_win_popup(self):
+        self.image1=pygame.image.load("images/win_popup.png")
+        self.screen.blit(self.image1,(400,2))
+
+    def show_draw_popup(self):
+        self.image2=pygame.image.load("images/draw_popup.png")
+        self.screen.blit(self.image2,(400,2))
+
+    def show_lost_popup(self):
+        self.image3=pygame.image.load("images/lost_popup.png")
+        self.screen.blit(self.image3,(400,2))

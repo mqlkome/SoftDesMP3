@@ -10,6 +10,7 @@ class MapsolvingModel:
     """ Encodes the game state """
     def __init__(self):
         ##call start screen objects, give positions
+        self.background=Background(0,0,0)
         self.ground = Ground(green1,140,640,0,360)
         self.sun=Sun(540,20)
         self.player=Player(0,204)
@@ -28,22 +29,46 @@ class MapsolvingModel:
         self.scissor_obs=Rockscissorpaper_obs(520,100,1)
         self.paper_obs=Rockscissorpaper_obs(520,100,2)
         self.counter=1
-    def change_obstacle(self):
-        #change obstacle and reset position
-        self.obstacle=Obstacle(550,200,self.counter)
-        self.counter+=1
+
+    def change_background(self):
+        self.background=Background(0,0,self.counter)
+        self.sun=Sun(540-200*self.counter,10+self.counter/2*20)
+    
 
     def change_item(self):
         self.item=Item(220,280,self.counter)
     def change_player_position(self):
         self.player.xposition=0
         self.player.yposition=204
+    def change_obstacle(self):
+        #change obstacle and reset position
+        #counter goes up in every cycle
+        self.obstacle=Obstacle(550,200,self.counter)
+        self.counter+=1
     def reset(self):
-        self.item=Item(220,280,0)
-        self.player.xposition=0
-        self.player.yposition=204
+        # self.item=Item(220,280,0)
+        # self.player.xposition=0
+        # self.player.yposition=204
+        self.counter=0
+        self.change_background()
+        self.change_item()
+        self.change_player_position()
+        self.change_obstacle()
 
 
+class Background:
+    def __init__(self,x,y,assign_int):
+        
+        backgrounds=["images/bluesky.png","images/mountain.png","images/fire.png","images/castle.png"]
+
+        ##Use to load random item
+        self.xposition=x
+        self.yposition=y
+        self.assign_int=assign_int
+        self.image=pygame.image.load(backgrounds[assign_int])
+
+    def draw(self, screen):
+        screen.blit(self.image, (self.xposition,self.yposition)) 
 
 class Ground:
     def __init__(self,color,height,width,x,y):
@@ -74,6 +99,10 @@ class Player(pygame.sprite.Sprite):
         self.previousx = self.xposition
         self.xposition += -30
         self.rect.x = self.xposition
+    def stepback(self):
+        self.xposition = self.previousx
+        self.rect.x = self.xposition
+        print "stepback"
 
     def draw(self, screen):
         screen.blit(self.image, (self.xposition,self.yposition))    
