@@ -148,15 +148,7 @@ if __name__ == '__main__':
                 for event in pygame.event.get():
                     if event.type==KEYDOWN: 
                         obstcollision = False
-<<<<<<< HEAD
 
-                        
-
-                       
-
-=======
-
->>>>>>> 2ba373ad612f5624eb724535a2aafc86ccbe20c7
                         if event.key == K_i:
                             ##if model.obstacle.wanted_item == model.item.image_path:
                             print "thanks"
