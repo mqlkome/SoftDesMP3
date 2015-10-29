@@ -158,7 +158,14 @@ class Obstacle(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
 
-        self.wanted_item = Item(x,y,randint(0,5))
+        self.wanted_item1 = Item(x,y,randint(0,5))
+        self.one = self.wanted_item1.image_path
+        self.wanted_item2 = Item(x,y,randint(0,5))
+        self.two = self.wanted_item2.image_path
+        self.wanted_item3 = Item(x,y,randint(0,5))
+        self.three = self.wanted_item3.image_path
+        
+
     def move(self):
         self.x = self.x-2000
         self.rect.x = self.rect.x-2000

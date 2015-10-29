@@ -76,3 +76,11 @@ class PyGameWindowView:
     def show_lost_popup(self):
         self.image3=pygame.image.load("images/lost_popup.png")
         self.screen.blit(self.image3,(400,2))
+
+    def show_thanks_popup(self):
+        self.image4 = pygame.image.load("images/thanks_popup.png")
+        self.screen.blit(self.image4, (540, 50))
+        
+    def show_nothanks_popup(self):
+        self.image5 = pygame.image.load("images/nothanks_popup.png")
+        self.screen.blit(self.image5, (540, 50))

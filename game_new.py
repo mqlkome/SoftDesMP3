@@ -144,28 +144,33 @@ if __name__ == '__main__':
                 elif model.player.previousx >= model.player.xposition:
                     controller.model.player.stepback()
             
-            # pygame.time.delay(1000)
-
-            # if model.player.previousx <= model.player.xposition:
-            #     controller.model.player.moveleft()
-            # elif model.player.previousx >= model.player.xposition:
-            #     controller.model.player.moveright()
                 for event in pygame.event.get():
                     if event.type==KEYDOWN: 
                         obstcollision = False
 
                         if event.key == K_i:
-                            if model.obstacle.wanted_item == model.item.image_path:
+                            miip = model.item.image_path
+                            one = model.obstacle.one
+                            two = model.obstacle.two
+                            three = model.obstacle.three
+                            print (miip, one, two, three)
+                            if miip == one or miip == two or miip == three:
+                                view.show_thanks_popup()
+                                pygame.display.update()
                                 print "thanks"
+                                pygame.time.delay(2000)
                                 model.obstacle.move()
                                 model.item.move()
+
                         
                             else:
-                                print "I hate that item. FIGHT ME"
+                                view.show_nothanks_popup()
+                                pygame.display.update()
+                                print "no thanks"
+                                pygame.time.delay(2000)
+                                model.item.move()
                                 
                         if event.key==K_f:
-                            
-
                             ##showing the popup for the long time
                             rcnum=1#randint(0,2)#randomly pick the computer's rock//scissor//paper
                             Time=True
