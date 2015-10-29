@@ -158,15 +158,20 @@ class Obstacle(pygame.sprite.Sprite):
         self.image=pygame.image.load(obstacles[self.assign_int])
 
         #Obstacle position
-        
         self.x = x
         self.y = y
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
 
+        self.wanted_item = Item(x,y,randint(0,5))
+    def move(self):
+        self.x = self.x-600
+        self.rect.x = self.rect.x-600
+            
     def draw(self, screen):
         screen1.blit(self.image,(self.x,self.y))
+
 
 
 class Sun:
@@ -180,10 +185,11 @@ class Item(pygame.sprite.Sprite):
     def __init__(self,x,y,assign_int):
         pygame.sprite.Sprite.__init__(self)
         items=["images/camera.png","images/eggplant.png","images/flower.png","images/mushroom.png","images/mysteriousblueorb.png","images/sword.png"]
-
+        
         ##Use to load random item
         self.assign_int=assign_int
-        self.image=pygame.image.load(items[assign_int])
+        self.image_path = items[assign_int]
+        self.image=pygame.image.load(self.image_path)
         
         ##item position
         self.x = x
@@ -245,4 +251,5 @@ class Rockscissorpaper_obs:
 
     def draw(self, screen):
         screen.blit(self.image, (self.x,self.y))   
+
 
