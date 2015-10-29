@@ -27,6 +27,8 @@ class PyGameWindowView:
         ##Draw the obstacle[change to model draw function]
         self.screen.blit(self.model.obstacle.image,(self.model.obstacle.x,self.model.obstacle.y))
 
+        ##Draw princess
+        self.model.princess.draw(self.screen)
         ##Draw the item
         self.model.item.draw(self.screen)
         
@@ -76,3 +78,4 @@ class PyGameWindowView:
     def show_lost_popup(self):
         self.image3=pygame.image.load("images/lost_popup.png")
         self.screen.blit(self.image3,(400,2))
+

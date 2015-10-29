@@ -14,7 +14,8 @@ class MapsolvingModel:
         self.ground = Ground(green1,140,640,0,360)
         self.sun=Sun(540,20)
         self.player=Player(0,204)
-        self.obstacle=Obstacle(550,200,0)
+        self.obstacle=Obstacle(500,200,0)
+        self.princess=Princess(5000,0)
         self.item=Item(220,280,0)
         self.attack=Attack(200,100)
         self.popup=Popup(400,100)
@@ -56,12 +57,15 @@ class MapsolvingModel:
         self.change_obstacle()
     def make_princess(self):
         #place the obstacle out of the screen
-        self.obstacle=Obstacle(500,150,self.counter)
-        self.background=Background(0,0,self.counter)
-        self.sun=Sun(320,5)
-        self.change_player_position()
-        self.change_item()
-        self.counter+=1
+        #self.change_player_position()
+        self.obstacle=Obstacle(900,150,self.counter)
+        self.princess=Princess(500,120)
+        print self.princess
+        #self.background=Background(0,0,self.counter)
+        # self.sun=Sun(320,5)
+        
+        #self.change_item()
+        #self.counter+=1
 
 class Background:
     def __init__(self,x,y,assign_int):
@@ -138,9 +142,10 @@ class Princess(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-
     def draw(self, screen):
-        screen1.blit(self.image,(self.x,self.y))
+        screen.blit(self.image,(self.x,self.y))
+
+    
 
 class Obstacle(pygame.sprite.Sprite):
     ###The obstacle characters

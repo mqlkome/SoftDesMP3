@@ -54,21 +54,27 @@ if __name__ == '__main__':
                     #view.draw()
                     global showresult_during_keypressed
                     showresult_during_keypressed=False
-                    global Time
-                    Time=False
+                    #global Time
+                    #Time=False
                     print model.counter
                     return showresult_during_keypressed
                     #change item. change obstacle
                     #change player position
 
                 elif model.counter==3:
+                    
+                    model.change_background()
                     model.make_princess()
+                    model.change_item()
+                    model.change_player_position()
+                    
                     global showresult_during_keypressed
                     showresult_during_keypressed=False
-                    global Time
-                    Time=False
+                    
                     print model.counter
                     return showresult_during_keypressed
+                else:
+                    print "you win final final"
 
 
         else:
@@ -123,8 +129,7 @@ if __name__ == '__main__':
                 if picked_up_item:
                     pass
                 else:
-                    controller.model.player.stepback()
-        ##Items are solid from the right
+                    controller.model.player.stepback()        ##Items are solid from the right
             elif model.player.previousx >= model.player.xposition:
                 if picked_up_item:                  
                     pass
@@ -133,7 +138,7 @@ if __name__ == '__main__':
 
         ##Obstacles are solid from the left
         ##THIS WILL BE MODIFIED SO THAT A SUCCESFUL BRIBE OR WIN IN A FIGHT WILL ALLOW YOU TO PASS
-        if pygame.sprite.collide_rect(model.player, model.obstacle):
+        if pygame.sprite.collide_rect(model.player, model.obstacle) or pygame.sprite.collide_rect(model.player, model.princess):
             obstcollision = True
             while obstcollision:
                 view.show_popup()
@@ -200,7 +205,7 @@ if __name__ == '__main__':
                                                         print showresult_during_keypressed
                                                         # if showresult_during_keypressed==False:
                                                         #     Time=False
-                                                        print Time
+                                                        #print Time
 
                                                         #showresult_during_keypressed=False
 
