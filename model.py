@@ -20,12 +20,12 @@ class MapsolvingModel:
         self.attack=Attack(200,100)
         self.popup=Popup(400,100)
 
-        ###making rockscissorpaper class
+        #making rockscissorpaper class
         self.rock=Rockscissorpaper(400,100,0)
         self.scissor=Rockscissorpaper(400,100,1)
         self.paper=Rockscissorpaper(400,100,2)
 
-        ##making obstacles's rockscissorpaper class
+        #making obstacles's rockscissorpaper class
         self.rock_obs=Rockscissorpaper_obs(520,100,0)
         self.scissor_obs=Rockscissorpaper_obs(520,100,1)
         self.paper_obs=Rockscissorpaper_obs(520,100,2)
@@ -112,10 +112,6 @@ class Player(pygame.sprite.Sprite):
         item.rect.x = item.x
         item.rect.y = item.y
 
-        #self.assign_int=assign_int
-    	#self.image=pygame.image.load(players[self.assign_int])
-    	#player's default position
-
 class Princess(pygame.sprite.Sprite):
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
@@ -123,7 +119,6 @@ class Princess(pygame.sprite.Sprite):
         self.image=pygame.image.load(princessimage)
 
         #Princess position
-        
         self.x = x
         self.y = y
         self.rect = self.image.get_rect()
@@ -131,8 +126,6 @@ class Princess(pygame.sprite.Sprite):
         self.rect.y = y
     def draw(self, screen):
         screen.blit(self.image,(self.x,self.y))
-
-    
 
 class Obstacle(pygame.sprite.Sprite):
     ###The obstacle characters
@@ -157,7 +150,6 @@ class Obstacle(pygame.sprite.Sprite):
         self.two = self.wanted_item2.image_path
         self.wanted_item3 = Item(x,y,randint(0,5))
         self.three = self.wanted_item3.image_path
-        
 
     def move(self):
         self.x = self.x-2000
@@ -166,14 +158,11 @@ class Obstacle(pygame.sprite.Sprite):
     def draw(self, screen):
         screen.blit(self.image,(self.x,self.y))
 
-
-
 class Sun:
     def __init__(self,x,y):
         self.image=pygame.image.load("images/sun.png")
         self.x = x
         self.y = y
-
 
 class Item(pygame.sprite.Sprite):
     def __init__(self,x,y,assign_int):
@@ -202,7 +191,7 @@ class Item(pygame.sprite.Sprite):
 class Popup:
     ##When you meet obstacle character, this displays press F or I
     def __init__(self,x,y):
-        popups=["images/popup_obstacle.png"]
+        popups=["images/popup_obstacle.jpg"]
 
         self.image=pygame.image.load(popups[0])
         self.x = x
@@ -249,5 +238,3 @@ class Rockscissorpaper_obs:
 
     def draw(self, screen):
         screen.blit(self.image, (self.x,self.y))   
-
-

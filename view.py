@@ -6,14 +6,9 @@ class PyGameWindowView:
     def __init__(self,model,screen):
         self.model = model
         self.screen = screen
-        # self.background1=pygame.image.load("images/bluesky.png").convert()
-        # self.background2=pygame.image.load("images/mountain.png").convert()
-        # self.background3=pygame.image.load("images/fire.png").convert()
-        # self.background4=pygame.image.load("images/castle.png").convert()
-
+        
     def draw(self):
         ##Draw the background
-        #self.screen.blit(self.background1,(0,0))
         self.model.background.draw(self.screen)
         ##Draw the player
         self.model.player.draw(self.screen)
@@ -25,16 +20,12 @@ class PyGameWindowView:
         self.screen.blit(self.model.sun.image,(self.model.sun.x,self.model.sun.y))
 
         ##Draw the obstacle[change to model draw function]
-        #self.screen.blit(self.model.obstacle.image,(self.model.obstacle.x,self.model.obstacle.y))
         self.model.obstacle.draw(self.screen)
-        ##Draw princess
-        #self.model.princess.draw(self.screen)
+        
         ##Draw the item
         self.model.item.draw(self.screen)
         
         pygame.display.update()
-
-
 
     def show_popup(self):
         self.model.popup.draw(self.screen)
@@ -67,15 +58,15 @@ class PyGameWindowView:
         pygame.display.update()
 
     def show_win_popup(self):
-        self.image1=pygame.image.load("images/win_popup.png")
+        self.image1=pygame.image.load("images/win_popup.jpg")
         self.screen.blit(self.image1,(200,100))
 
     def show_draw_popup(self):
-        self.image2=pygame.image.load("images/draw_popup.png")
+        self.image2=pygame.image.load("images/draw_popup.jpg")
         self.screen.blit(self.image2,(200,100))
 
     def show_lost_popup(self):
-        self.image3=pygame.image.load("images/lost_popup.png")
+        self.image3=pygame.image.load("images/lost_popup.jpg")
         self.screen.blit(self.image3,(200,100))
 
 
