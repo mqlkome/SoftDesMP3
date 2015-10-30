@@ -15,7 +15,7 @@ class MapsolvingModel:
         self.sun=Sun(540,20)
         self.player=Player(0,204)
         self.obstacle=Obstacle(500,200,0)
-        self.princess=Princess(5000,0)
+        #self.princess=Princess(5000,0)
         self.item=Item(220,280,0)
         self.attack=Attack(200,100)
         self.popup=Popup(400,100)
@@ -44,28 +44,16 @@ class MapsolvingModel:
     def change_obstacle(self):
         #change obstacle and reset position
         #counter goes up in every cycle
-        self.obstacle=Obstacle(550,200,self.counter)
+        self.obstacle=Obstacle(500, 200-100*(self.counter/3),self.counter)
         self.counter+=1
     def reset(self):
-        # self.item=Item(220,280,0)
-        # self.player.xposition=0
-        # self.player.yposition=204
+        
         self.counter=0
         self.change_background()
         self.change_item()
         self.change_player_position()
         self.change_obstacle()
-    def make_princess(self):
-        #place the obstacle out of the screen
-        #self.change_player_position()
-        self.obstacle=Obstacle(900,150,self.counter)
-        self.princess=Princess(500,120)
-        print self.princess
-        #self.background=Background(0,0,self.counter)
-        # self.sun=Sun(320,5)
-        
-        #self.change_item()
-        #self.counter+=1
+    
 
 class Background:
     def __init__(self,x,y,assign_int):
@@ -177,7 +165,7 @@ class Obstacle(pygame.sprite.Sprite):
         self.rect.x = self.rect.x-2000
                     
     def draw(self, screen):
-        screen1.blit(self.image,(self.x,self.y))
+        screen.blit(self.image,(self.x,self.y))
 
 
 
@@ -215,7 +203,7 @@ class Item(pygame.sprite.Sprite):
 class Popup:
     ##When you meet obstacle character, this displays press F or I
     def __init__(self,x,y):
-        popups=["images/popup_obstacle.jpg"]
+        popups=["images/popup_obstacle.png"]
 
         self.image=pygame.image.load(popups[0])
         self.x = x

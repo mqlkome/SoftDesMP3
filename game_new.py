@@ -45,11 +45,12 @@ if __name__ == '__main__':
     def rcs_win(num):
         if event.type==KEYDOWN:
             if event.key==pygame.K_SPACE:
-                if model.counter <3:
+                if model.counter <=3:
                     model.change_background()
-                    model.change_obstacle()
+                    
                     model.change_item()
                     model.change_player_position()
+                    model.change_obstacle()
 
                     #view.draw()
                     global showresult_during_keypressed
@@ -61,32 +62,47 @@ if __name__ == '__main__':
                     #change item. change obstacle
                     #change player position
 
-                elif model.counter==3:
+                # elif model.counter==3:
                     
-                    model.change_background()
-                    model.make_princess()
-                    model.change_item()
-                    model.change_player_position()
+                #     model.change_background()
                     
-                    global showresult_during_keypressed
-                    showresult_during_keypressed=False
+                #     model.change_item()
+                #     model.change_player_position()
+                #     model.make_princess()
+                      
+                #     global showresult_during_keypressed
+                #     showresult_during_keypressed=False
                     
-                    print model.counter
-                    return showresult_during_keypressed
+                #     print model.counter
+                #     return showresult_during_keypressed
                 else:
                     print "you win final final"
+                    pygame.quit()
+                    
+                        
+                        
 
-
+  
         else:
-            print "player win"
-            print "press SPACE to go to second round"
-            view.draw()
-            #pygame.time.delay(500)
-            show=[view.show_rock_obs,view.show_scissor_obs,view.show_paper_obs]
-            view.show_win_popup()
-            #view.show_scissor_obs()
-            show[num]()
-            return
+            if model.counter==4:
+                view.draw()
+                #pygame.time.delay(500)
+                show=[view.show_rock_obs,view.show_scissor_obs,view.show_paper_obs]
+                view.show_win_popup()
+                #view.show_scissor_obs()
+                show[num]()
+                #pygame.time.delay(1000)
+                view.show_final_popup()
+            else:
+                print "player win"
+                print "press SPACE to go to second round"
+                view.draw()
+                #pygame.time.delay(500)
+                show=[view.show_rock_obs,view.show_scissor_obs,view.show_paper_obs]
+                view.show_win_popup()
+                #view.show_scissor_obs()
+                show[num]()
+                return
 
     def rcs_lost(num):
     
@@ -116,6 +132,18 @@ if __name__ == '__main__':
                 model.change_obstacle()
                 model.change_item()
                 model.change_player_position()
+            else:
+                view.show_final_popup()
+                pygame.display.update()
+                pygame.time.delay(1000)
+                for event in pygame.event.get():
+                    if event.type==KEYDOWN:
+                         if event.key==K_SPACE:
+                            pygame.quit() 
+                    
+
+
+                #print "you win image this should be replace to image you won the princess"
         #Picking up items: this should happen when you press the key for "pick up item" not automatically when you collide with it:
         if pygame.sprite.collide_rect(model.player, model.item):
             #
@@ -135,11 +163,17 @@ if __name__ == '__main__':
                     pass
                 else:                                        
                     controller.model.player.stepback()
-
+        # if pygame.sprite.collide_rect(model.player, model.princess):
+        #     print "player met princess"
+        #     print "princess rect coor",model.princess.rect.x, model.princess.rect.y
+        #     print "princess xy coord", model.princess.x,model.princess.y
+        #     print "player xy coord", model.player.xposition, model.player.yposition
+            
         ##Obstacles are solid from the left
         ##THIS WILL BE MODIFIED SO THAT A SUCCESFUL BRIBE OR WIN IN A FIGHT WILL ALLOW YOU TO PASS
-        if pygame.sprite.collide_rect(model.player, model.obstacle) or pygame.sprite.collide_rect(model.player, model.princess):
+        if pygame.sprite.collide_rect(model.player, model.obstacle): #or pygame.sprite.collide_rect(model.player, model.princess):
             obstcollision = True
+
             while obstcollision:
                 view.show_popup()
                 
@@ -177,7 +211,7 @@ if __name__ == '__main__':
                                 
                         if event.key==K_f:
                             ##showing the popup for the long time
-                            rcnum=1#randint(0,2)#randomly pick the computer's rock//scissor//paper
+                            rcnum=randint(0,2)#randomly pick the computer's rock//scissor//paper
                             Time=True
                             while Time:
                                 for event in pygame.event.get():

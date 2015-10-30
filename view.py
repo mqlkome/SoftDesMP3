@@ -25,10 +25,10 @@ class PyGameWindowView:
         self.screen.blit(self.model.sun.image,(self.model.sun.x,self.model.sun.y))
 
         ##Draw the obstacle[change to model draw function]
-        self.screen.blit(self.model.obstacle.image,(self.model.obstacle.x,self.model.obstacle.y))
-
+        #self.screen.blit(self.model.obstacle.image,(self.model.obstacle.x,self.model.obstacle.y))
+        self.model.obstacle.draw(self.screen)
         ##Draw princess
-        self.model.princess.draw(self.screen)
+        #self.model.princess.draw(self.screen)
         ##Draw the item
         self.model.item.draw(self.screen)
         
@@ -68,15 +68,15 @@ class PyGameWindowView:
         pygame.display.update()
 
     def show_win_popup(self):
-        self.image1=pygame.image.load("images/win_popup.jpg")
+        self.image1=pygame.image.load("images/win_popup.png")
         self.screen.blit(self.image1,(200,100))
 
     def show_draw_popup(self):
-        self.image2=pygame.image.load("images/draw_popup.jpg")
+        self.image2=pygame.image.load("images/draw_popup.png")
         self.screen.blit(self.image2,(200,100))
 
     def show_lost_popup(self):
-        self.image3=pygame.image.load("images/lost_popup.jpg")
+        self.image3=pygame.image.load("images/lost_popup.png")
         self.screen.blit(self.image3,(200,100))
 
 
@@ -87,4 +87,6 @@ class PyGameWindowView:
     def show_nothanks_popup(self):
         self.image5 = pygame.image.load("images/nothanks_popup.png")
         self.screen.blit(self.image5, (540, 50))
-
+    def show_final_popup(self):
+        self.image6=pygame.image.load("images/final_popup.png")
+        self.screen.blit(self.image6, (200, 100))
