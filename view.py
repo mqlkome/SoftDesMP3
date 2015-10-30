@@ -38,7 +38,6 @@ class PyGameWindowView:
 
     def show_popup(self):
         self.model.popup.draw(self.screen)
-        print "show_popup"
         pygame.display.update()
 
     def show_attack(self):

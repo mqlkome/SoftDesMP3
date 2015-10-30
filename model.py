@@ -101,8 +101,7 @@ class Player(pygame.sprite.Sprite):
     def stepback(self):
         self.xposition = self.previousx
         self.rect.x = self.xposition
-        print "stepback"
-
+        
     def draw(self, screen):
         screen.blit(self.image, (self.xposition,self.yposition))    
 
