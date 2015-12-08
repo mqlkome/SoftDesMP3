@@ -27,6 +27,13 @@ class PyGameWindowView:
         
         pygame.display.update()
 
+    # I feel like there could have been a less copy-paste way to
+    # have it draw different combinations of these things
+    # for example, something like a list of all possible things, each one being marked
+    # as "draw" or "don't draw" true/false flag, and call the draw method
+    # of each one of them.  then, you only need one function instead of a new
+    # one every time you create a new object. 
+
     def show_popup(self):
         self.model.popup.draw(self.screen)
         pygame.display.update()

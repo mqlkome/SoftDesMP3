@@ -25,6 +25,9 @@ if __name__ == '__main__':
     model = MapsolvingModel()
     view = PyGameWindowView(model,screen1)
     controller = PyGameKeyboardController(model)
+    
+    # it's generally not the best style to declare functions within 
+    # and if statement like this
     def rcs_draw(num):
         if event.type==KEYDOWN:                 
             if event.key==K_SPACE:
@@ -38,6 +41,10 @@ if __name__ == '__main__':
             view.show_draw_popup()
             show[num]()
 
+    # all this logic with handling key presses and what they mean
+    # both here as well as further down
+    # is stuff that I would expect to see in your controller class
+    # not so much in the game running file here
     def rcs_win(num):
         if event.type==KEYDOWN:
             if event.key==pygame.K_SPACE:
@@ -60,6 +67,7 @@ if __name__ == '__main__':
                 show=[view.show_rock_obs,view.show_scissor_obs,view.show_paper_obs]
                 view.show_win_popup()
                 show[num]()
+                # this is a really interesting approach
                 view.show_final_popup()
             else:
                 view.draw()
@@ -111,6 +119,9 @@ if __name__ == '__main__':
                 if picked_up_item:
                     pass
                 else:
+                    # you shouldn't have to do controller.model here
+                    # you know what the model is, you could just call it by the model variable name
+                    # this kind of thing shows you that this code might not be best placed in this file
                     controller.model.player.stepback()        
             ##Items are solid from the right
             elif model.player.previousx >= model.player.xposition:
@@ -159,6 +170,7 @@ if __name__ == '__main__':
                             ##showing the popup for the long time
                             rcnum=randint(0,2)#randomly pick the computer's rock//scissor//paper
                             Time=True
+                            # capital-letter variable names should be avoided if possible for convention
                             while Time:
                                 for event in pygame.event.get():
                                     if event.type==KEYDOWN:
@@ -168,6 +180,7 @@ if __name__ == '__main__':
                                             ##rock image comes out and fight with randomly generated rock scissor paper of computer
 
                                             showresult_during_keypressed=True
+                                            # careful with capital letters on variable names
                                             Oneloop=True
                                             while showresult_during_keypressed:
                                                 

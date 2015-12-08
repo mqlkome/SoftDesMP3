@@ -213,6 +213,8 @@ class Attack(pygame.sprite.Sprite):
     def draw(self,screen):
         screen.blit(self.image,(self.x,self.y)) 
 
+# what does obs stand for and why do we have two classes
+# that are almost exactly the same, but one called obs?
 class Rockscissorpaper:
     def __init__(self,x,y,assign_int):
         rsp=["images/rock.jpg","images/scissor.jpg","images/paper.jpg"]
