@@ -27,63 +27,13 @@ class PyGameWindowView:
         
         pygame.display.update()
 
-    # I feel like there could have been a less copy-paste way to
-    # have it draw different combinations of these things
-    # for example, something like a list of all possible things, each one being marked
-    # as "draw" or "don't draw" true/false flag, and call the draw method
-    # of each one of them.  then, you only need one function instead of a new
-    # one every time you create a new object. 
-
-    def show_popup(self):
-        self.model.popup.draw(self.screen)
+    def show(self, picture):
+        picture.draw(self.screen)
         pygame.display.update()
 
-    def show_attack(self):
-        self.model.attack.draw(self.screen)
-        pygame.display.update()
+    def show_popup(self, popup):
+        self.screen.blit(pygame.image.load(popup), (200,100))
 
-    def show_rock(self):
-        self.model.rock.draw(self.screen)
-        pygame.display.update()
+    def show_speech(self, bubble):
+        self.screen.blit(pygame.image.load(bubble), (540, 50))
 
-    def show_scissor(self):
-        self.model.scissor.draw(self.screen)
-        pygame.display.update()
-
-    def show_paper(self):
-        self.model.paper.draw(self.screen)
-        pygame.display.update()
-
-    def show_rock_obs(self):
-        self.model.rock_obs.draw(self.screen)
-        pygame.display.update()
-    def show_scissor_obs(self):
-        self.model.scissor_obs.draw(self.screen)
-        pygame.display.update()
-    def show_paper_obs(self):
-        self.model.paper_obs.draw(self.screen)
-        pygame.display.update()
-
-    def show_win_popup(self):
-        self.image1=pygame.image.load("images/win_popup.jpg")
-        self.screen.blit(self.image1,(200,100))
-
-    def show_draw_popup(self):
-        self.image2=pygame.image.load("images/draw_popup.jpg")
-        self.screen.blit(self.image2,(200,100))
-
-    def show_lost_popup(self):
-        self.image3=pygame.image.load("images/lost_popup.jpg")
-        self.screen.blit(self.image3,(200,100))
-
-
-    def show_thanks_popup(self):
-        self.image4 = pygame.image.load("images/thanks_popup.png")
-        self.screen.blit(self.image4, (540, 50))
-
-    def show_nothanks_popup(self):
-        self.image5 = pygame.image.load("images/nothanks_popup.png")
-        self.screen.blit(self.image5, (540, 50))
-    def show_final_popup(self):
-        self.image6=pygame.image.load("images/final_popup.png")
-        self.screen.blit(self.image6, (200, 100))

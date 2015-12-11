@@ -15,6 +15,7 @@ class MapsolvingModel:
         self.sun=Sun(540,20)
         self.player=Player(0,204)
         self.obstacle=Obstacle(500,200,0)
+
         #self.princess=Princess(5000,0)
         self.item=Item(220,280,0)
         self.attack=Attack(200,100)
